@@ -6,7 +6,7 @@ const homeTemplate = (data, onsubmit) => html `
 ${/^((?!chrome|android).)*safari/i.test(navigator.userAgent)? html `<div>Pesho</div>`:html`
 <video  type="video/mp4" controls playsinline autoplay loop muted preload="auto">
 <source src="../../assets/landingVideo.mp4"/>
-<source src="../../assets/landingVideo.webm"/>
+<!-- <source src="../../assets/landingVideo.webm"/> -->
 </video>
 `}
 <div class="description">
