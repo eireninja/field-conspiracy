@@ -1,13 +1,34 @@
-import { html } from 'https://unpkg.com/lit-html?module';
-import { getInstaVideos } from '../api/data.js';
+import { html } from 'https://unpkg.com/lit-html?module'
+import { getInstaVideos } from '../api/data.js'
 
-
-const homeTemplate = (data, onsubmit) => html `
-<video  type="video/m4v" controls playsinline autoplay loop muted>
-<source src="../../assets/landingVideo.m4v"/>
-<source src="../../assets/landingVideo.webm"/>
-</video>
-
+const homeTemplate = (data, onsubmit) => html`
+${
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    ? html`
+        <video
+          type="video/mp4"
+          controls
+          playsinline
+          autoplay
+          loop
+          muted
+          preload="auto"
+        >
+          <source src="../../assets/landingVideo.m4v" />
+        </video>
+      `
+    : html`
+        <video
+          type="video/webm"
+          autoplay
+          loop
+          muted
+          
+        >
+          <source src="../../assets/landingVideo.webm" />
+        </video>
+      `
+}
 <div class="description">
     <p>Field Conspiracy is a social experiment & a record label, which nurtures community and creativity. It
         aims to be a playground of creative space for musicians, where the inspiration and courage to be free in
@@ -66,89 +87,79 @@ const homeTemplate = (data, onsubmit) => html `
     </div>
 
 </section>
-`;
+`
 
-const cardTemplate = (item) => html `
-<a class = 'instaLink' href=${item.instaLink} target="blank">
-    <article  class='instaVideosFetched'>
-        <img src=${item.URL} alt="" />
-        <p class="instaVideosPlay">${item.artist} - ${item.track}<i class="fas fa-play"></i></p>
-
-</article></a>
-`;
-
-
+const cardTemplate = (item) => html`
+  <a class="instaLink" href=${item.instaLink} target="blank">
+    <article class="instaVideosFetched">
+      <img src=${item.URL} alt="" />
+      <p class="instaVideosPlay">
+        ${item.artist} - ${item.track}
+        <i class="fas fa-play"></i>
+      </p>
+    </article>
+  </a>
+`
 
 export async function homePage(ctx) {
-    let data = await getInstaVideos();
-    ctx.render(homeTemplate(data, onsubmit));
-    async function onsubmit(e) {
-        e.preventDefault();
-        const form = document.getElementById('newstler-Form');
-        let formData = new FormData(form);
+  let data = await getInstaVideos()
+  ctx.render(homeTemplate(data, onsubmit))
+  async function onsubmit(e) {
+    e.preventDefault()
+    const form = document.getElementById('newstler-Form')
+    let formData = new FormData(form)
 
-        let email = formData.get("EMAIL");
-        let fName = formData.get("FNAME");
+    let email = formData.get('EMAIL')
+    let fName = formData.get('FNAME')
 
-
-
-        if (email === '') {
-            window.alert(`The Email field must be filled`)
-        }
-        if (!email.includes('@') || !email.includes('.')) {
-            window.alert('The email is not correct')
-        }
-        let data = {
-            "email_address": email,
-            "name": fName
-
-        }
-        fetch('/.netlify/functions/subscribe', {
-            method: 'POST',
-
-            headers: {
-
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        })
-
-        .then(responce => responce.json())
-            .then(data => console.log(data))
-
-
-
-
-        form.reset();
-
+    if (email === '') {
+      window.alert(`The Email field must be filled`)
     }
+    if (!email.includes('@') || !email.includes('.')) {
+      window.alert('The email is not correct')
+    }
+    let data = {
+      email_address: email,
+      name: fName,
+    }
+    fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
 
-    const button = document.getElementById('mc-embedded-subscribe');
-    const newstler = document.getElementsByClassName('newstler')[0];
-    const newstlerWrapper = document.getElementById('newstlerForm');
-    const newstlerThanks = document.getElementsByClassName('newstlerThanks')[0];
-    const closeThanks = document.getElementsByClassName('fa-times-circle')[0];
-
-    closeThanks.addEventListener('click', () => {
-        if (newstlerThanks.style.display = 'flex') {
-            newstlerThanks.style.display = 'none';
-        }
-        if (newstlerWrapper.style.display = 'flex') {
-            newstlerWrapper.style.display = 'none';
-        }
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
     })
+      .then((responce) => responce.json())
+      .then((data) => console.log(data))
 
-    newstler.addEventListener('click', () => {
-        newstlerWrapper.style.display = 'flex';
-    })
+    form.reset()
+  }
 
-    button.addEventListener('click', () => {
-        newstlerWrapper.style.display = 'none';
-        newstlerThanks.style.display = 'flex';
-        setInterval(function() { newstlerThanks.style.display = 'none'; }, 3000);
-    })
+  const button = document.getElementById('mc-embedded-subscribe')
+  const newstler = document.getElementsByClassName('newstler')[0]
+  const newstlerWrapper = document.getElementById('newstlerForm')
+  const newstlerThanks = document.getElementsByClassName('newstlerThanks')[0]
+  const closeThanks = document.getElementsByClassName('fa-times-circle')[0]
 
+  closeThanks.addEventListener('click', () => {
+    if ((newstlerThanks.style.display = 'flex')) {
+      newstlerThanks.style.display = 'none'
+    }
+    if ((newstlerWrapper.style.display = 'flex')) {
+      newstlerWrapper.style.display = 'none'
+    }
+  })
 
+  newstler.addEventListener('click', () => {
+    newstlerWrapper.style.display = 'flex'
+  })
 
-
+  button.addEventListener('click', () => {
+    newstlerWrapper.style.display = 'none'
+    newstlerThanks.style.display = 'flex'
+    setInterval(function () {
+      newstlerThanks.style.display = 'none'
+    }, 3000)
+  })
 }
