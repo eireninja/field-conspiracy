@@ -17,7 +17,7 @@
 }
 
 .imgAndDesc div {
-    width: 30%;
+    width: 50%;
 }
 
 .imgAndDesc div img {
@@ -27,3 +27,16 @@
 .imgAndDesc .showDesc {
     width: 60%;
 }
+
+@media screen and (max-width: 750px) {
+    .imgAndDesc {
+        flex-direction: column;
+    }
+    .imgAndDesc div {
+        width: 100%;
+    }
+    .imgAndDesc .showDesc {
+        width: 100%;
+    }
+}
+    
