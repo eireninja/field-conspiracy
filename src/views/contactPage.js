@@ -38,7 +38,7 @@ export async function contactPage(ctx) {
     const editAbout = document.getElementsByClassName('editAbout')[0];
     const editableCont = document.getElementById('editableContact');
     const editableAbout = document.getElementById('editableAbout');
-    editContact.addEventListener('click', (e)=>{
+    editContact?.addEventListener('click', (e)=>{
         if(e.target.textContent === 'Edit'){
             editableCont.contentEditable = true;
             editableCont.focus();
@@ -51,7 +51,7 @@ export async function contactPage(ctx) {
         }
     });
 
-    editAbout.addEventListener('click', (e)=>{
+    editAbout?.addEventListener('click', (e)=>{
         if(e.target.textContent === 'Edit'){
             editableAbout.contentEditable = true;
             editableAbout.focus();
