@@ -7,7 +7,7 @@ const contactTemplate = (contact, about) => html `
             <h1>Contact:</h1>
             <p id = 'editableContact'> ${contact} 
             </p>
-            ${(sessionStorage)
+            ${(sessionStorage.getItem("email") === 'fieldconspiracy@gmail.com')
             ?
             html`<button class="editButton editContact" >Edit</button>`
             :
