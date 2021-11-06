@@ -5,7 +5,17 @@ const homeTemplate = (data, onsubmit) => html`
 ${
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
     ? html`
-         <img src="" alt="">
+        <video
+          type="video/m4v"
+          controls
+          playsinline
+          autoplay
+          loop
+          muted
+          preload="auto"
+        >
+          <source src="../../assets/landingVideo.m4v" />
+        </video>
       `
     : html`
         <video
