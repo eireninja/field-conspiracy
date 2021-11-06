@@ -3,10 +3,12 @@ import { getInstaVideos } from '../api/data.js';
 
 
 const homeTemplate = (data, onsubmit) => html `
+${/^((?!chrome|android).)*safari/i.test(navigator.userAgent)? html `<div>Pesho</div>`:html`
 <video  type="video/mp4" controls playsinline autoplay loop muted preload="auto">
 <source src="../../assets/landingVideo.mp4"/>
 <source src="../../assets/landingVideo.webm"/>
 </video>
+`}
 <div class="description">
     <p>Field Conspiracy is a social experiment & a record label, which nurtures community and creativity. It
         aims to be a playground of creative space for musicians, where the inspiration and courage to be free in
