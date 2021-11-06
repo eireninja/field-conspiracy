@@ -9,7 +9,7 @@ const homeTemplate = (data, onsubmit) => html`
           autoplay
           loop
           muted
-          
+          controls
         >
           <source src="../../assets/landingVideo.webm" />
         </video>
