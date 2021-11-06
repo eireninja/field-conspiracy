@@ -7,12 +7,10 @@ ${
     ? html`
         <video
           type="video/m4v"
-          controls
           playsinline
           autoplay
           loop
           muted
-          preload="auto"
         >
           <source src="../../assets/landingVideo.m4v" />
         </video>
