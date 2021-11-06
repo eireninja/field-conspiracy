@@ -3,12 +3,20 @@ import { getInstaVideos } from '../api/data.js';
 
 
 const homeTemplate = (data, onsubmit) => html `
-<!-- // ${/^((?!chrome|android).)*safari/i.test(navigator.userAgent)? html `<div>Pesho</div>`:html` -->
+${/^((?!chrome|android).)*safari/i.test(navigator.userAgent)? html `<iframe
+          width="100%"
+          height="auto"
+          scrolling="no"
+          frameborder="no"
+          allow="autoplay"
+          src="https://firebasestorage.googleapis.com/v0/b/fieldconspiracy-1813.appspot.com/o/landingVideo.webm?alt=media&token=ab5d4fd6-524f-4a57-9d2c-2f9202fa763b"
+        >
+        </iframe>`:html`
 <video  type="video/mp4" controls playsinline autoplay loop muted preload="auto">
 <source src="../../assets/landingVideo.mp4"/>
 <!-- <source src="../../assets/landingVideo.webm"/> -->
 </video>
-
+`}
 <div class="description">
     <p>Field Conspiracy is a social experiment & a record label, which nurtures community and creativity. It
         aims to be a playground of creative space for musicians, where the inspiration and courage to be free in
