@@ -65,7 +65,7 @@ export async function createBlogArticlePage(ctx) {
         let img = formData.get('img');
         let link = formData.get('link');
         let time = new Date();
-        const [day, month, year] = [time.getDate(), time.getMonth(), time.getFullYear()]
+        const [day, month, year] = [time.getDate(), time.getMonth()+1, time.getFullYear()]
         let date = `${day}.${month}.${year}`;
         let createDate = Date.parse(time);
         let embed = formData.get('embed');

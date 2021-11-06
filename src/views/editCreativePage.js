@@ -143,7 +143,7 @@ export async function editCreativePage(ctx) {
     const data = await getCreativeById(ctx.params.id);
     let createDate = new Date(data.createDate);
 
-    let [day, month, year] = [createDate.getDate(), createDate.getMonth(), createDate.getFullYear()]
+    let [day, month, year] = [createDate.getDate(), createDate.getMonth()+1, createDate.getFullYear()]
 
     ctx.render(editCreativeTemplate(data, onSubmit,day,month,year));
 

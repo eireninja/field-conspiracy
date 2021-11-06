@@ -12,7 +12,7 @@ const editShowTemplate = (data, onSubmit, day, month, year) => html `
 
       <div>
         <label for="description">Description:</label>
-        <textarea id="description" name="description"><pre>${data.description}</pre>
+        <textarea id="description" name="description">${data.description}
              
         </textarea>
       </div>
@@ -44,7 +44,7 @@ export async function editShowPage(ctx) {
     const data = await getShowById(ctx.params.id);
     let createDate = new Date(data.createDate);
 
-    let [day, month, year] = [createDate.getDate(), createDate.getMonth(), createDate.getFullYear()]
+    let [day, month, year] = [createDate.getDate(), createDate.getMonth()+1, createDate.getFullYear()]
     ctx.render(editShowTemplate(data, onSubmit, day, month, year));
     
 
