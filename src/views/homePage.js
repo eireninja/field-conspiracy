@@ -3,7 +3,7 @@ import { getInstaVideos } from '../api/data.js';
 
 
 const homeTemplate = (data, onsubmit) => html `
-<video  type="video/m4v" controls playsinline autoplay loop muted preload="auto">
+<video  type="video/m4v" controls playsinline autoplay loop muted>
 <source src="../../assets/landingVideo.m4v"/>
 <source src="../../assets/landingVideo.webm"/>
 </video>
