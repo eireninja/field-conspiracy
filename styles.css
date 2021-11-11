@@ -89,8 +89,9 @@ body::-webkit-scrollbar {
 
 .headerNav h1 {
     font-size: 32px;
+    font-weight: 900;
     cursor: default;
-    margin-left: 30px;
+    padding-left: 60px;
     text-transform: uppercase;
 }
 
