@@ -13,7 +13,7 @@
     <title>Field Conspiracy</title>
 </head>
 
-<body>
+<body onclick="playMusic();">
     <header>
         <div class="authButtons">
             <a href="/createRelease"><button id="adminPanel">New Release</button></a>
@@ -25,7 +25,7 @@
         </div>
         <nav class="headerNav">
             <h1>Field Conspiracy</h1>
-           
+
             <div class="navWrapper">
                 <a href="/releases">
                     <li>Releases</li>
@@ -81,7 +81,7 @@
     </header>
     <main>
 
-        
+
     </main>
 
     <footer class="footer">
@@ -102,10 +102,19 @@
         <p class="copyright">
             &copy; 2021 by Field Conspiracy. All rights reserved
         </p>
+        
+        <audio controls autoplay loop>
+            <source src="/assets/bckSound.wav" type="audio/ogg">
+        </audio>
     </footer>
     <script src="/src/app.js" type="module"></script>
-    
-    
+    <script>
+        function playMusic() {
+            var audio = document.getElementsByTagName("audio")[0];
+            audio.play();
+        }
+    </script>
+
 </body>
 
 </html>
