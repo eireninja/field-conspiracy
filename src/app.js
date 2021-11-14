@@ -121,9 +121,3 @@ mobileNav.addEventListener('click', () => {
     mobileNav.style.display = 'none';
     burgerMenuIcon.style.opacity = 1;
 })
-
-document.addEventListener('onload', musicPlay);
-function musicPlay() {
-    document.getElementsByTagName('sc')[0].play();
-    document.removeEventListener('onload', musicPlay);
-}
