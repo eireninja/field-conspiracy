@@ -81,6 +81,7 @@ body::-webkit-scrollbar {
     align-items: center;
     margin-top: 30px;
     width: 100%;
+    
 }
 
 .headerNav div a {
@@ -91,10 +92,11 @@ body::-webkit-scrollbar {
     font-size: 32px;
     font-weight: 900;
     cursor: default;
-    padding-left: 60px;
     text-transform: uppercase;
 }
-
+.navWrapper{
+    margin-right: 83px;
+}
 .headerNav .navWrapper {
     display: flex;
     align-items: center;
@@ -237,7 +239,8 @@ main {
     }
   }
   
-  .headerNav h1 {
+  .headerNav h1,
+  .mobileNav h1 {
 	-webkit-animation: flicker-in-1 2s linear 1s both;
 	        animation: flicker-in-1 2s linear 1s both;
 }
@@ -529,4 +532,30 @@ main {
         margin: 0px;
         padding: 0px;
     }
+
+    .mobileLogo {
+        -webkit-animation: rotate-center 1s ease-in-out both;
+                animation: rotate-center 1s ease-in-out both;
+    }
+    
+     @-webkit-keyframes rotate-center {
+        0% {
+          -webkit-transform: rotate(0);
+                  transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
+      @keyframes rotate-center {
+        0% {
+          -webkit-transform: rotate(0);
+                  transform: rotate(0);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+                  transform: rotate(360deg);
+        }
+      }
 }
