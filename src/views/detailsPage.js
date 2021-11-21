@@ -25,6 +25,15 @@ const detailsTemplate = (data, onDelete, ctx) => html `
             ${data.resident ? html`<a href=${data.resident} target="_blank"><img class="fab" src="/assets/raIcon.png"
                     alt=""></a>` : html``}
         </div>
+        <iframe
+            style = "margin-top:20px;"
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${data.embed}
+        ></iframe>
 
         <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
         <div class="adminButtons">
