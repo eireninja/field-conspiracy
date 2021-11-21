@@ -1,7 +1,7 @@
 import { html } from "https://unpkg.com/lit-html?module";
 import { createArtist } from "../api/data.js";
 
-const createArtistTemplate = (onSubmit) => html `
+const createArtistTemplate = (onSubmit) => html`
     <section id="editArtistSection">
         <form @submit=${onSubmit} id="edit-form">
             <h1>Create Artist</h1>
@@ -13,16 +13,15 @@ const createArtistTemplate = (onSubmit) => html `
 
                 <div>
                     <label for="description">Description:</label>
-                    <textarea
-                        id="description"
-                        name="description"
-                    >
-</textarea>
-            
+                    <textarea id="description" name="description"></textarea>
                 </div>
                 <div>
                     <label for="imageUrl">Image Url</label>
                     <input id="imageUrl" type="text" value="" name="imageUrl" />
+                </div>
+                <div>
+                    <label for="embed">Embed</label>
+                    <input type="text" name="embed" value="" />
                 </div>
                 <div class="socialEdit">
                     <label for="">Bandcamp:</label>
@@ -93,10 +92,10 @@ export async function createArtistPage(ctx) {
         e.preventDefault();
         const editForm = document.getElementById("edit-form");
         let formData = new FormData(editForm);
-
+        let embed = formData.get('embed');
         let name = formData.get("name");
         let description = formData.get("description");
-        console.log(description)
+        console.log(description);
         let img = formData.get("imageUrl");
         let bandcamp = formData.get("bandcamp");
         let soundcloud = formData.get("soundcloud");
@@ -117,6 +116,7 @@ export async function createArtistPage(ctx) {
             facebook,
             instagram,
             resident,
+            embed
         };
         await createArtist(body);
         ctx.setUserNav();

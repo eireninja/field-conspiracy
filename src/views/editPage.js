@@ -23,6 +23,10 @@ const editTemplate = (data, onSubmit) => html `
           <label for="imageUrl">Image Url</label>
           <input id="imageUrl" type="text" value=${data.img} name="imageUrl" />
         </div>
+        <div>
+                    <label for="embed">Embed</label>
+                    <input type="text" name="embed" value=${data.embed} />
+                </div>
         <div class="socialEdit">
           <label for="">Bandcamp:</label>
           <input
@@ -93,6 +97,7 @@ export async function editPage(ctx) {
         let name = formData.get("name");
         let description = formData.get("description");
         let img = formData.get("imageUrl");
+        let embed = formData.get('embed');
         let bandcamp = formData.get("bandcamp");
         let soundcloud = formData.get("soundcloud");
         let spotify = formData.get("spotify");
@@ -112,6 +117,7 @@ export async function editPage(ctx) {
             facebook,
             instagram,
             resident,
+            embed
         };
         await editArtist(ctx.params.id, body);
         ctx.setUserNav();
