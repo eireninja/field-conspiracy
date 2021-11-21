@@ -33,7 +33,8 @@
     align-items: center;
     color: white;
     position: absolute;
-    top: -60px;
+    top: 30px;
+    font-size: 13px;
     justify-content: center;
     font-weight: 700;
     z-index: 7;
