@@ -46,7 +46,7 @@ ${
     ${data.map(cardTemplate)}
 </section>
 <section class="newstlerWrapper">
-    <article class="newstler">Subscribe to Newslettler</article>
+    <article class="newstler">Subscribe to Newsletter</article>
     <p class="newstlerDesc">Subscribe to Our Newstler to recieve occasional news and updates. We do not share your email
         to any third
         parties. For more information, please view our Privacy Policy.</p>
