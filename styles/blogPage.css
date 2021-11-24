@@ -32,7 +32,7 @@
     text-overflow: ellipsis;
 }
 
-.readMore {
+/* .readMore {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,7 +50,7 @@
     text-decoration: none;
     text-align: center;
 }
-
+*/
 .readMore a:hover {
     background: rgb(152, 32, 231);
     transition: 0.5s;
