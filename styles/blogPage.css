@@ -30,9 +30,10 @@
 
 .articleDescription {
     text-overflow: ellipsis;
+    /* 
 }
 
-/* .readMore {
+.readMore {
     display: flex;
     justify-content: space-between;
     align-items: center;
