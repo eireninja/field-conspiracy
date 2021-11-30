@@ -23,15 +23,78 @@ const releaseCard = (item) => html`
             </div>
             
         </a>
+        ${item[1].embed1 ? html`
         <iframe
             width="100%"
             height="120px"
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src=${item[1].embed}
+            src=${item[1].embed1}
         >
         </iframe>
+        ` : ""}
+    
+        ${item[1].embed2 ? html`
+        <iframe
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${item[1].embed2}
+        >
+        </iframe>
+         ` : ""}
+
+         ${item[1].embed3s ? html`
+        <iframe
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${item[1].embed3s}
+        >
+        </iframe>
+         ` : ""}
+
+         ${item[1].embed4 ? html`
+        <iframe
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${item[1].embed4}
+        >
+        </iframe>
+         ` : ""}
+
+         ${item[1].embed5 ? html`
+        <iframe
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${item[1].embed5}
+        >
+        </iframe>
+         ` : ""}
+
+         ${item[1].embed6 ? html`
+        <iframe
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${item[1].embed6}
+        >
+        </iframe>
+         ` : ""}
+        
         <div class="creativesAdminButtons">
             ${sessionStorage.getItem("email") === "fieldconspiracy@gmail.com"
                 ? html`<a class="editButton" href="/releases/edit/${item[0]}"

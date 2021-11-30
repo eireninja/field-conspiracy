@@ -23,10 +23,37 @@ const editTemplate = (data, onSubmit) => html `
           <label for="imageUrl">Image Url</label>
           <input id="imageUrl" type="text" value=${data.img} name="imageUrl" />
         </div>
+        
         <div>
-                    <label for="embed">Embed</label>
-                    <input type="text" name="embed" value=${data.embed} />
+                    <label for="embed1">Embed</label>
+                    <input type="text" name="embed1" value=${data.embed1} />
                 </div>
+
+                <div>
+                    <label for="embed2">Embed</label>
+                    <input type="text" name="embed2" value=${data.embed2} />
+                </div>
+
+                <div>
+                    <label for="embed3">Embed</label>
+                    <input type="text" name="embed3" value=${data.embed3} />
+                </div>
+
+                <div>
+                    <label for="embed4">Embed</label>
+                    <input type="text" name="embed4" value=${data.embed4} />
+                </div>
+
+                <div>
+                    <label for="embed5">Embed</label>
+                    <input type="text" name="embed5" value=${data.embed5} />
+                </div>
+
+                <div>
+                    <label for="embed6">Embed</label>
+                    <input type="text" name="embed6" value=${data.embed6} />
+                </div>
+
         <div class="socialEdit">
           <label for="">Bandcamp:</label>
           <input
@@ -97,7 +124,12 @@ export async function editPage(ctx) {
         let name = formData.get("name");
         let description = formData.get("description");
         let img = formData.get("imageUrl");
-        let embed = formData.get('embed');
+        let embed1 = formData.get('embed1');
+        let embed2 = formData.get('embed2');
+        let embed3 = formData.get('embed3');
+        let embed4 = formData.get('embed4');
+        let embed5 = formData.get('embed5');
+        let embed6 = formData.get('embed6');
         let bandcamp = formData.get("bandcamp");
         let soundcloud = formData.get("soundcloud");
         let spotify = formData.get("spotify");
@@ -117,7 +149,12 @@ export async function editPage(ctx) {
             facebook,
             instagram,
             resident,
-            embed
+            embed1,
+            embed2,
+            embed3,
+            embed4,
+            embed5,
+            embed6,
         };
         await editArtist(ctx.params.id, body);
         ctx.setUserNav();

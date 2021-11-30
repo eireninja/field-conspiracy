@@ -20,8 +20,28 @@ const createArtistTemplate = (onSubmit) => html`
                     <input id="imageUrl" type="text" value="" name="imageUrl" />
                 </div>
                 <div>
-                    <label for="embed">Embed</label>
-                    <input type="text" name="embed" value="" />
+                    <label for="embed1">Embed</label>
+                    <input type="text" name="embed1" value="" />
+                </div>
+                <div>
+                    <label for="embed2">Embed</label>
+                    <input type="text" name="embed2" value="" />
+                </div>
+                <div>
+                    <label for="embed3">Embed</label>
+                    <input type="text" name="embed3" value="" />
+                </div>
+                <div>
+                    <label for="embed4">Embed</label>
+                    <input type="text" name="embed4" value="" />
+                </div>
+                <div>
+                    <label for="embed5">Embed</label>
+                    <input type="text" name="embed5" value="" />
+                </div>
+                <div>
+                    <label for="embed6">Embed</label>
+                    <input type="text" name="embed6" value="" />
                 </div>
                 <div class="socialEdit">
                     <label for="">Bandcamp:</label>
@@ -92,7 +112,12 @@ export async function createArtistPage(ctx) {
         e.preventDefault();
         const editForm = document.getElementById("edit-form");
         let formData = new FormData(editForm);
-        let embed = formData.get('embed');
+        let embed1 = formData.get('embed1');
+        let embed2 = formData.get('embed2');
+        let embed3 = formData.get('embed3');
+        let embed4 = formData.get('embed4');
+        let embed5 = formData.get('embed5');
+        let embed6 = formData.get('embed6');
         let name = formData.get("name");
         let description = formData.get("description");
         console.log(description);
@@ -116,7 +141,12 @@ export async function createArtistPage(ctx) {
             facebook,
             instagram,
             resident,
-            embed
+            embed1,
+            embed2,
+            embed3,
+            embed4,
+            embed5,
+            embed6,
         };
         await createArtist(body);
         ctx.setUserNav();

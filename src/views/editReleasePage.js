@@ -40,10 +40,35 @@ const editReleaseTemplate = (data, onSubmit) => html`
                     <label for="URL">Image URL</label>
                     <input id="URL" type="text" value=${data.URL} name="URL" />
                 </div>
+            
+                <div>
+                    <label for="embed1">Embed</label>
+                    <input type="text" name="embed1" value=${data.embed1} />
+                </div>
 
                 <div>
-                    <label for="embed">Embed</label>
-                    <input type="text" name="embed" value=${data.embed} />
+                    <label for="embed2">Embed</label>
+                    <input type="text" name="embed2" value=${data.embed2} />
+                </div>
+
+                <div>
+                    <label for="embed3">Embed</label>
+                    <input type="text" name="embed3" value=${data.embed3} />
+                </div>
+
+                <div>
+                    <label for="embed4">Embed</label>
+                    <input type="text" name="embed4" value=${data.embed4} />
+                </div>
+
+                <div>
+                    <label for="embed5">Embed</label>
+                    <input type="text" name="embed5" value=${data.embed5} />
+                </div>
+
+                <div>
+                    <label for="embed6">Embed</label>
+                    <input type="text" name="embed6" value=${data.embed6} />
                 </div>
 
                 <input
@@ -71,14 +96,24 @@ export async function editReleasePage(ctx) {
         let track = formData.get("track");
         let URL = formData.get("URL");
         let bandCamp = formData.get("bandCamp");
-        let embed = formData.get('embed');
+        let embed1 = formData.get('embed1');
+        let embed2 = formData.get('embed2');
+        let embed3 = formData.get('embed3');
+        let embed4 = formData.get('embed4');
+        let embed5 = formData.get('embed5');
+        let embed6 = formData.get('embed6');
 
         const body = {
             artist,
             track,
             URL,
             bandCamp,
-            embed
+            embed1,
+            embed2,
+            embed3,
+            embed4,
+            embed5,
+            embed6,
         };
         await editRelease(ctx.params.id, body);
         ctx.setUserNav();

@@ -25,6 +25,20 @@ const detailsTemplate = (data, onDelete, ctx) => html `
             ${data.resident ? html`<a href=${data.resident} target="_blank"><img class="fab" src="/assets/raIcon.png"
                     alt=""></a>` : html``}
         </div>
+
+        ${data.embed1 ? html`
+        <iframe
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${data.embed1}
+        >
+        </iframe>
+        ` : ""}
+    
+        ${data.embed2 ? html`
         <iframe
             style = "margin-top:20px;"
             width="100%"
@@ -32,8 +46,60 @@ const detailsTemplate = (data, onDelete, ctx) => html `
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src=${data.embed}
+            src=${data.embed2}
         ></iframe>
+         ` : ""}
+
+         ${data.embed3 ? html`
+         <iframe
+            style = "margin-top:20px;"
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${data.embed3}
+        ></iframe>
+         ` : ""}
+
+         ${data.embed4 ? html`
+         <iframe
+            style = "margin-top:20px;"
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${data.embed4}
+        ></iframe>
+         ` : ""}
+
+         ${data.embed5 ? html`
+         <iframe
+            style = "margin-top:20px;"
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${data.embed5}
+        ></iframe>
+         ` : ""}
+
+         ${data.embed6 ? html`
+         <iframe
+            style = "margin-top:20px;"
+            width="100%"
+            height="120px"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            src=${data.embed6}
+        ></iframe>
+         ` : ""}
+
+
+        
 
         <!-- Buttons Edit/Delete should be displayed only for creator of this meme  -->
         <div class="adminButtons">

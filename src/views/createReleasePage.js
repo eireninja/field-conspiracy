@@ -32,8 +32,28 @@ const createReleaseTemplate = (onSubmit) => html`
                 </div>
 
                 <div>
-                    <label for="embed">Embed</label>
-                    <input type="text" name="embed" value="" />
+                    <label for="embed1">Embed</label>
+                    <input type="text" name="embed1" value="" />
+                </div>
+                <div>
+                    <label for="embed2">Embed</label>
+                    <input type="text" name="embed2" value="" />
+                </div>
+                <div>
+                    <label for="embed3">Embed</label>
+                    <input type="text" name="embed3" value="" />
+                </div>
+                <div>
+                    <label for="embed4">Embed</label>
+                    <input type="text" name="embed4" value="" />
+                </div>
+                <div>
+                    <label for="embed5">Embed</label>
+                    <input type="text" name="embed5" value="" />
+                </div>
+                <div>
+                    <label for="embed6">Embed</label>
+                    <input type="text" name="embed6" value="" />
                 </div>
                 <input
                     type="submit"
@@ -57,7 +77,12 @@ export async function createReleasePage(ctx) {
         let track = formData.get("track");
         let URL = formData.get("URL");
         let bandCamp = formData.get("bandCamp");
-        let embed = formData.get('embed');
+        let embed1 = formData.get('embed1');
+        let embed2 = formData.get('embed2');
+        let embed3 = formData.get('embed3');
+        let embed4 = formData.get('embed4');
+        let embed5 = formData.get('embed5');
+        let embed6 = formData.get('embed6');
         let id = (Math.random() + 1).toString(36).substring(2);
         console.log(id);
 
@@ -67,7 +92,12 @@ export async function createReleasePage(ctx) {
             URL,
             bandCamp,
             id,
-            embed
+            embed1,
+            embed2,
+            embed3,
+            embed4,
+            embed5,
+            embed6,
         };
         await createRelease(body);
         ctx.setUserNav();
