@@ -47,14 +47,14 @@ const releaseCard = (item) => html`
         </iframe>
          ` : ""}
 
-         ${item[1].embed3s ? html`
+         ${item[1].embed3 ? html`
         <iframe
             width="100%"
             height="120px"
             scrolling="no"
             frameborder="no"
             allow="autoplay"
-            src=${item[1].embed3s}
+            src=${item[1].embed3}
         >
         </iframe>
          ` : ""}
