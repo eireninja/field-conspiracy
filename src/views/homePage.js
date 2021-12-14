@@ -1,7 +1,8 @@
 import { html } from 'https://unpkg.com/lit-html?module'
-import { getInstaVideos } from '../api/data.js'
+import { getInstaVideos, updateHomeDesc, getCredit, updateCredit } from '../api/data.js'
+import { getHomeDesc } from '../api/data.js'
 
-const homeTemplate = (data, onsubmit) => html`
+const homeTemplate = (data,homePageDesc,credit, onsubmit) => html`
 ${
   /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
     ? html`
@@ -25,19 +26,21 @@ ${
         >
           <source src="../../assets/landingVideo.webm" />
         </video>
+        <p id = 'editableCredit'> ${credit}</p>
+        ${(sessionStorage.getItem("email") === 'fieldconspiracy@gmail.com')
+            ?
+            html`<button class="editButton editContact editCreditButton" >Edit</button>`
+            :
+            html``}
       `
 }
 <div class="description">
-    <p>Field Conspiracy is a social experiment & a record label, which nurtures community and creativity. It
-        aims to be a playground of creative space for musicians, where the inspiration and courage to be free in
-        a community are leading the life we want to live – so that we can live the life we want to lead.
-        Together we imagine a reality where the “human management systems” are defined by the interest of
-        communities to live a life that provides them with the security and a space to be free in the creation
-        of their own reality.</p>
-    <p>When we realize that more can be achieved through the force of creative love than destructive fear and
-        fight, then we open the door to collective humanity. The choice lies within all of us, here and now and
-        it is what has brought us together in this experiment of positive radicalism in a form of co-operation
-        over competition.</p>
+    <p id = 'editableHomePageDesc'>${homePageDesc}</p>
+    ${(sessionStorage.getItem("email") === 'fieldconspiracy@gmail.com')
+            ?
+            html`<button class="editButton editContact editHomePageDesc" >Edit</button>`
+            :
+            html``}
 
 </div>
 <div class="instaDescription">instagram @fieldconspiracy</div>
@@ -101,7 +104,9 @@ const cardTemplate = (item) => html`
 
 export async function homePage(ctx) {
   let data = await getInstaVideos()
-  ctx.render(homeTemplate(data, onsubmit))
+  let homePageDesc = await getHomeDesc();
+  let credit = await getCredit();
+  ctx.render(homeTemplate(data,homePageDesc,credit, onsubmit))
   async function onsubmit(e) {
     e.preventDefault()
     const form = document.getElementById('newstler-Form')
@@ -160,4 +165,36 @@ export async function homePage(ctx) {
       newstlerThanks.style.display = 'none'
     }, 3000)
   })
+
+  const editableHomePageDesc = document.getElementById('editableHomePageDesc');
+  const editHomePageDescButton = document.getElementsByClassName('editHomePageDesc')[0];
+
+  editHomePageDescButton?.addEventListener('click', (e) => {
+      if(e.target.textContent === 'Edit'){
+    editableHomePageDesc.contentEditable = true;
+    editableHomePageDesc.focus();
+    editHomePageDescButton.textContent = 'Save';
+      }else if(e.target.textContent === 'Save'){
+    editableHomePageDesc.contentEditable = false;
+    editableHomePageDesc.blur();
+    editHomePageDescButton.textContent = 'Edit';
+    updateHomeDesc(editableHomePageDesc.textContent);
+      }
+  });
+
+  const editableCredit = document.getElementById('editableCredit');
+  const editCreditButton = document.getElementsByClassName('editCreditButton')[0];
+
+  editCreditButton.addEventListener('click', (e) => {
+    if(e.target.textContent === 'Edit'){
+      editableCredit.contentEditable = true;
+      editableCredit.focus();
+      editCreditButton.textContent = 'Save';
+    }else if(e.target.textContent === 'Save'){
+      editableCredit.contentEditable = false;
+      editableCredit.blur();
+      editCreditButton.textContent = 'Edit';
+      updateCredit(editableCredit.textContent);
+    }
+  });
 }

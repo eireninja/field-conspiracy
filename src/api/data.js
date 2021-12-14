@@ -5,6 +5,22 @@ const host =
 
 api.settings.host = host;
 
+export async function getHomeDesc() {
+    return await api.get(host + 'homePageDesc.json');
+}
+
+export async function updateHomeDesc(data) {
+    return await api.put(host + 'homePageDesc.json', data);
+}
+
+export async function getCredit(){
+    return await api.get(host + 'credit.json');
+}
+
+export async function updateCredit(data){
+    return await api.put(host + 'credit.json', data);
+}
+
 export async function createRelease(data) {
     return await api.post(host + 'releases.json', data);
 }
