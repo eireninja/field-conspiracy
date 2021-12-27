@@ -27,7 +27,7 @@ const blogCard = (item) => html `
                               >Read More</a
                           >
                       </div>
-                      <p>${item[1].description}</p>
+                      <textarea readonly id ='descToPass'>${item[1].description}</textarea>
                       <p>${item[1].author}</p>
                       <p>${item[1].date}</p>
                   </div>
@@ -41,7 +41,7 @@ const blogCard = (item) => html `
                           <h1>${item[1].title}</h1>
                           <a href="/blog/${item[0]}" id=${item[0]}>Read More</a>
                       </div>
-                      <p class="articleDescription">${item[1].description}</p>
+                      <textarea readonly id ='descToPass'>${item[1].description}</textarea>
                       <p>${item[1].author}</p>
                       <p>${item[1].date}</p>
                   </div>

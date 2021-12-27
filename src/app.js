@@ -1,6 +1,7 @@
 import * as api from "./api/data.js";
 import { render } from "https://unpkg.com/lit-html?module";
 import page from "https://unpkg.com/page/page.mjs";
+// import EditorJS from '@editorjs/editorjs';
 
 import { homePage } from "./views/homePage.js";
 import { releasesPage } from "./views/releasesPage.js";
@@ -121,3 +122,4 @@ mobileNav.addEventListener('click', () => {
     mobileNav.style.display = 'none';
     burgerMenuIcon.style.opacity = 1;
 })
+

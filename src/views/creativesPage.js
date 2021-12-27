@@ -21,7 +21,7 @@ const creativeCard = (item) => html `
     </div>
     <div class="creativeArtistrtistInfo">
         <p class="creativeArtistName">${item[1].name}</p>
-        <p class="creativeArtistDesc">${item[1].description}</p>
+        <textarea readonly id="descToPass">${item[1].description}</textarea>
         <div class="artworkContainer">
             <p class="creativeArtistArtwork">Artwork</p>
             <p class="creatorImagesContainer">${item[1].creatorImgs.filter(x=>x!=='').map(artworkCard)}</p>

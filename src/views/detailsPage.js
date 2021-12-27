@@ -9,9 +9,9 @@ const detailsTemplate = (data, onDelete, ctx) => html `
         <img src=${data.img} alt="artistImg" />
     </div>
     <article class="artistDescription">
-        <p id = 'description'>
+        <textarea readonly id = 'descToPass'>
             ${data.description}
-        </p>
+        </textarea>
 
         <div class="artistSocial">
             ${data.bandcamp ? html`<a href=${data.bandcamp} target="_blank"><i class="fab fa-bandcamp"></i></a>` : html``}

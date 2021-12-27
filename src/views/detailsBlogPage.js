@@ -10,7 +10,7 @@ const detailsBlogTemplate = (data, ctx, onDelete) => html `
 
     <div class="detailsDescWrapper">
       <h1>${data.title}</h1>
-      <p>${data.description}</p>
+      <textarea readonly id="descToPass">${data.description}</textarea>
       <p>${data.author}</p>
       <p>${data.date}</p>
     </div>

@@ -15,7 +15,8 @@ const showsCard = (item) => html `
 
       <div class="showDesc">
         <h1>${item[1].title}</h1>
-        <p>${item[1].description}</p>
+        <textarea readonly id="descToPass">${item[1].description}</textarea>
+        
         <p>${item[1].date}</p>
       </div>
     </section>
@@ -53,7 +54,7 @@ export async function showsPage(ctx) {
     }else{
         data = Object.entries(dataObj);
         data.sort((a,b)=>a[1].createDate-b[1].createDate).reverse();
-    
+    console.log(data[0][1].description);
     
   }
     ctx.render(showsTemplate(data, showsCard));
@@ -79,4 +80,5 @@ export async function showsPage(ctx) {
         
         
     }
+    
 }

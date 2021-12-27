@@ -559,3 +559,34 @@ main {
         }
       }
 }
+#descToPass{
+    background-color: transparent;
+    color: inherit;
+    width: 600px;
+    height: 300px;
+    border: none;
+    resize: none;
+    font-size: 18px;
+    scrollbar-color: #6969dd #e0e0e0;
+    scrollbar-width: thin;
+}
+
+#descToPass::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px #9820E7;
+  background-color: black;
+}
+
+#descToPass::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: black;
+}
+
+#descToPass::-webkit-scrollbar-thumb
+{
+  background-color: #9820E7;
+  border: 2px solid #555555;
+}
+
+
