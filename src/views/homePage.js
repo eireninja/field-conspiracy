@@ -1,46 +1,47 @@
-import { html } from 'https://unpkg.com/lit-html?module'
-import { getInstaVideos, updateHomeDesc, getCredit, updateCredit } from '../api/data.js'
-import { getHomeDesc } from '../api/data.js'
+import { html } from "https://unpkg.com/lit-html?module";
+import {
+    getInstaVideos,
+    updateHomeDesc,
+    getCredit,
+    updateCredit,
+} from "../api/data.js";
+import { getHomeDesc } from "../api/data.js";
 
-const homeTemplate = (data,homePageDesc,credit, onsubmit) => html`
+const homeTemplate = (data, homePageDesc, credit, onsubmit) => html`
 ${
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-    ? html`
-        <video
-          type="video/m4v"
-          playsinline
-          autoplay
-          loop
-          muted
-        >
-          <source src="../../assets/landingVideo.m4v" />
-        </video>
-      `
-    : html`
-        <video
-          type="video/webm"
-          autoplay
-          loop
-          muted
-          
-        >
-          <source src="../../assets/landingVideo.webm" />
-        </video>
-        <p id = 'editableCredit'> ${credit}</p>
-        ${(sessionStorage.getItem("email") === 'fieldconspiracy@gmail.com')
-            ?
-            html`<button class="editButton editContact editCreditButton" >Edit</button>`
-            :
-            html``}
-      `
+    /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+        ? html`
+              <video type="video/m4v" playsinline autoplay loop muted>
+                  <source src="../../assets/landingVideo.m4v" />
+              </video>
+          `
+        : html`
+              <video type="video/webm" autoplay loop muted>
+                  <source src="../../assets/landingVideo.webm" />
+              </video>
+              <div class="description">
+                  <p id="editableCredit">${credit}</p>
+
+                  ${sessionStorage.getItem("email") ===
+                  "fieldconspiracy@gmail.com"
+                      ? html`<button
+                            class="editButton editContact editCreditButton"
+                        >
+                            Edit
+                        </button>`
+                      : html``}
+              </div>
+          `
 }
 <div class="description">
     <p id = 'editableHomePageDesc'>${homePageDesc}</p>
-    ${(sessionStorage.getItem("email") === 'fieldconspiracy@gmail.com')
-            ?
-            html`<button class="editButton editContact editHomePageDesc" >Edit</button>`
-            :
-            html``}
+    ${
+        sessionStorage.getItem("email") === "fieldconspiracy@gmail.com"
+            ? html`<button class="editButton editContact editHomePageDesc">
+                  Edit
+              </button>`
+            : html``
+    }
 
 </div>
 <div class="instaDescription">instagram @fieldconspiracy</div>
@@ -88,113 +89,117 @@ ${
     </div>
 
 </section>
-`
+`;
 
 const cardTemplate = (item) => html`
-  <a class="instaLink" href=${item.instaLink} target="blank">
-    <article class="instaVideosFetched">
-      <img src=${item.URL} alt="" />
-      <p class="instaVideosPlay">
-        ${item.artist} - ${item.track}
-        <i class="fas fa-play"></i>
-      </p>
-    </article>
-  </a>
-`
+    <a class="instaLink" href=${item.instaLink} target="blank">
+        <article class="instaVideosFetched">
+            <img src=${item.URL} alt="" />
+            <p class="instaVideosPlay">
+                ${item.artist} - ${item.track}
+                <i class="fas fa-play"></i>
+            </p>
+        </article>
+    </a>
+`;
 
 export async function homePage(ctx) {
-  let data = await getInstaVideos()
-  let homePageDesc = await getHomeDesc();
-  let credit = await getCredit();
-  ctx.render(homeTemplate(data,homePageDesc,credit, onsubmit))
-  async function onsubmit(e) {
-    e.preventDefault()
-    const form = document.getElementById('newstler-Form')
-    let formData = new FormData(form)
+    let data = await getInstaVideos();
+    let homePageDesc = await getHomeDesc();
+    let credit = await getCredit();
+    ctx.render(homeTemplate(data, homePageDesc, credit, onsubmit));
+    async function onsubmit(e) {
+        e.preventDefault();
+        const form = document.getElementById("newstler-Form");
+        let formData = new FormData(form);
 
-    let email = formData.get('EMAIL')
-    let fName = formData.get('FNAME')
+        let email = formData.get("EMAIL");
+        let fName = formData.get("FNAME");
 
-    if (email === '') {
-      window.alert(`The Email field must be filled`)
+        if (email === "") {
+            window.alert(`The Email field must be filled`);
+        }
+        if (!email.includes("@") || !email.includes(".")) {
+            window.alert("The email is not correct");
+        }
+        let data = {
+            email_address: email,
+            name: fName,
+        };
+        fetch("/.netlify/functions/subscribe", {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((responce) => responce.json())
+            .then((data) => console.log(data));
+
+        form.reset();
     }
-    if (!email.includes('@') || !email.includes('.')) {
-      window.alert('The email is not correct')
-    }
-    let data = {
-      email_address: email,
-      name: fName,
-    }
-    fetch('/.netlify/functions/subscribe', {
-      method: 'POST',
 
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-      .then((responce) => responce.json())
-      .then((data) => console.log(data))
+    const button = document.getElementById("mc-embedded-subscribe");
+    const newstler = document.getElementsByClassName("newstler")[0];
+    const newstlerWrapper = document.getElementById("newstlerForm");
+    const newstlerThanks = document.getElementsByClassName("newstlerThanks")[0];
+    const closeThanks = document.getElementsByClassName("fa-times-circle")[0];
 
-    form.reset()
-  }
+    closeThanks.addEventListener("click", () => {
+        if ((newstlerThanks.style.display = "flex")) {
+            newstlerThanks.style.display = "none";
+        }
+        if ((newstlerWrapper.style.display = "flex")) {
+            newstlerWrapper.style.display = "none";
+        }
+    });
 
-  const button = document.getElementById('mc-embedded-subscribe')
-  const newstler = document.getElementsByClassName('newstler')[0]
-  const newstlerWrapper = document.getElementById('newstlerForm')
-  const newstlerThanks = document.getElementsByClassName('newstlerThanks')[0]
-  const closeThanks = document.getElementsByClassName('fa-times-circle')[0]
+    newstler.addEventListener("click", () => {
+        newstlerWrapper.style.display = "flex";
+    });
 
-  closeThanks.addEventListener('click', () => {
-    if ((newstlerThanks.style.display = 'flex')) {
-      newstlerThanks.style.display = 'none'
-    }
-    if ((newstlerWrapper.style.display = 'flex')) {
-      newstlerWrapper.style.display = 'none'
-    }
-  })
+    button.addEventListener("click", () => {
+        newstlerWrapper.style.display = "none";
+        newstlerThanks.style.display = "flex";
+        setInterval(function () {
+            newstlerThanks.style.display = "none";
+        }, 3000);
+    });
 
-  newstler.addEventListener('click', () => {
-    newstlerWrapper.style.display = 'flex'
-  })
+    const editableHomePageDesc = document.getElementById(
+        "editableHomePageDesc"
+    );
+    const editHomePageDescButton =
+        document.getElementsByClassName("editHomePageDesc")[0];
 
-  button.addEventListener('click', () => {
-    newstlerWrapper.style.display = 'none'
-    newstlerThanks.style.display = 'flex'
-    setInterval(function () {
-      newstlerThanks.style.display = 'none'
-    }, 3000)
-  })
+    editHomePageDescButton?.addEventListener("click", (e) => {
+        if (e.target.textContent === "Edit") {
+            editableHomePageDesc.contentEditable = true;
+            editableHomePageDesc.focus();
+            editHomePageDescButton.textContent = "Save";
+        } else if (e.target.textContent === "Save") {
+            editableHomePageDesc.contentEditable = false;
+            editableHomePageDesc.blur();
+            editHomePageDescButton.textContent = "Edit";
+            updateHomeDesc(editableHomePageDesc.textContent);
+        }
+    });
 
-  const editableHomePageDesc = document.getElementById('editableHomePageDesc');
-  const editHomePageDescButton = document.getElementsByClassName('editHomePageDesc')[0];
+    const editableCredit = document.getElementById("editableCredit");
+    const editCreditButton =
+        document.getElementsByClassName("editCreditButton")[0];
 
-  editHomePageDescButton?.addEventListener('click', (e) => {
-      if(e.target.textContent === 'Edit'){
-    editableHomePageDesc.contentEditable = true;
-    editableHomePageDesc.focus();
-    editHomePageDescButton.textContent = 'Save';
-      }else if(e.target.textContent === 'Save'){
-    editableHomePageDesc.contentEditable = false;
-    editableHomePageDesc.blur();
-    editHomePageDescButton.textContent = 'Edit';
-    updateHomeDesc(editableHomePageDesc.textContent);
-      }
-  });
-
-  const editableCredit = document.getElementById('editableCredit');
-  const editCreditButton = document.getElementsByClassName('editCreditButton')[0];
-
-  editCreditButton.addEventListener('click', (e) => {
-    if(e.target.textContent === 'Edit'){
-      editableCredit.contentEditable = true;
-      editableCredit.focus();
-      editCreditButton.textContent = 'Save';
-    }else if(e.target.textContent === 'Save'){
-      editableCredit.contentEditable = false;
-      editableCredit.blur();
-      editCreditButton.textContent = 'Edit';
-      updateCredit(editableCredit.textContent);
-    }
-  });
+    editCreditButton.addEventListener("click", (e) => {
+        if (e.target.textContent === "Edit") {
+            editableCredit.contentEditable = true;
+            editableCredit.focus();
+            editCreditButton.textContent = "Save";
+        } else if (e.target.textContent === "Save") {
+            editableCredit.contentEditable = false;
+            editableCredit.blur();
+            editCreditButton.textContent = "Edit";
+            updateCredit(editableCredit.textContent);
+        }
+    });
 }
