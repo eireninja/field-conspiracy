@@ -26,20 +26,17 @@ ${
                   "fieldconspiracy@gmail.com"
                       ? html`<button
                             class="editButton editContact editCreditButton"
-                        >
-                            Edit
-                        </button>`
+                        >Edit</button>`
                       : html``}
               </div>
           `
 }
 <div class="description">
+    <p>We’re part of the official CTM Vorspiel 2022 programme! Onsite and online from the 27th to the 30th of January, Field Conspiracy x Catalyst Berlin presents a transformational series of music industry focused events for up-and-coming artists. Check out the full programme here >>> https://vorspiel.berlin/?fbclid=IwAR1uLKiPQAdbKNQwjtWdocBCR99cDNr1IqErQFOCafsQFyRk9ZFp7vPfzcg</p>
     <p id = 'editableHomePageDesc'>${homePageDesc}</p>
     ${
         sessionStorage.getItem("email") === "fieldconspiracy@gmail.com"
-            ? html`<button class="editButton editContact editHomePageDesc">
-                  Edit
-              </button>`
+            ? html`<button class="editButton editContact editHomePageDesc">Edit</button>`
             : html``
     }
 
@@ -174,6 +171,7 @@ export async function homePage(ctx) {
         document.getElementsByClassName("editHomePageDesc")[0];
 
     editHomePageDescButton?.addEventListener("click", (e) => {
+        console.log(e.target.textContent)
         if (e.target.textContent === "Edit") {
             editableHomePageDesc.contentEditable = true;
             editableHomePageDesc.focus();
@@ -190,7 +188,8 @@ export async function homePage(ctx) {
     const editCreditButton =
         document.getElementsByClassName("editCreditButton")[0];
 
-    editCreditButton.addEventListener("click", (e) => {
+    editCreditButton?.addEventListener("click", (e) => {
+        console.log(e.target.textContent)
         if (e.target.textContent === "Edit") {
             editableCredit.contentEditable = true;
             editableCredit.focus();
