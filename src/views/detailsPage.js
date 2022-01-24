@@ -29,7 +29,7 @@ const detailsTemplate = (data, onDelete, ctx) => html `
         ${data.embed1 ? html`
         <iframe
             width="100%"
-            height="120px"
+            height="266px"
             scrolling="no"
             frameborder="no"
             allow="autoplay"
