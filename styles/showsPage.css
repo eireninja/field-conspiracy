@@ -8,16 +8,18 @@
 
 .showWrapper {
     margin-bottom: 50px;
+    width: 100%;
 }
 
 .imgAndDesc {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
 }
 
 .imgAndDesc div {
-    width: 50%;
+    width: 100%;
     margin-right: 20px;
 }
 
@@ -26,15 +28,14 @@
 }
 
 .imgAndDesc .showDesc {
-    width: 60%;
+    width: 100%;
 }
+
 .imgAndDesc .showDesc h1 {
     font-size: 20px;
     margin-bottom: 0;
     color: white;
 }
-
-
 
 @media screen and (max-width: 750px) {
     .imgAndDesc {
@@ -47,4 +48,3 @@
         width: 100%;
     }
 }
-    

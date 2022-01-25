@@ -1,7 +1,7 @@
 #artistDetails {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     width: 100%;
 }
 
@@ -18,15 +18,15 @@
 }
 
 .imgAndName img {
-    width: 70%;
+    width: 60%;
     border-radius: 6px;
 }
 
 .artistDescription {
-    width: 50%;
+    width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -34,6 +34,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .artistSocial img {
@@ -87,13 +88,14 @@
     }
     .imgAndName {
         width: 70%;
+        margin-top: 0px;
     }
     .imgAndName img {
         width: 100%;
         border-radius: 6px;
     }
     .artistDescription {
-        width: 100%;
+        width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
