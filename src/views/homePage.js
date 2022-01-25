@@ -7,7 +7,7 @@ import {
 } from "../api/data.js";
 import { getHomeDesc } from "../api/data.js";
 
-const homeTemplate = (data, homePageDesc, credit, onsubmit) => html`
+const homeTemplate = (data, homePageDesc, credit, onsubmit) => html `
 ${
     /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
         ? html`
@@ -19,26 +19,55 @@ ${
               <video type="video/webm" autoplay loop muted>
                   <source src="../../assets/landingVideo.webm" />
               </video>
-              <div class="description">
-                  <p id="editableCredit">${credit}</p>
 
-                  ${sessionStorage.getItem("email") ===
-                  "fieldconspiracy@gmail.com"
-                      ? html`<button
-                            class="editButton editContact editCreditButton"
-                        >Edit</button>`
-                      : html``}
+              <!-- edit credits for video here -->
+              <!-- you can change the text color in homePage.css file - line 217 -->
+              <div class="description">
+                  <p class = 'creditDescription'>
+                      We’re part of the official CTM Vorspiel 2022 programme!
+                      Onsite and online from the 27th to the 30th of January,
+                      Field Conspiracy x Catalyst Berlin presents a
+                      transformational series of music industry focused events
+                      for up-and-coming artists. Check out the full programme
+                      >>>
+                      <a
+                          class="text-flicker-in-glow"
+                          target="_blank"
+                          href="http://vorspiel.berlin/?fbclid=IwAR1uLKiPQAdbKNQwjtWdocBCR99cDNr1IqErQFOCafsQFyRk9ZFp7vPfzcg"
+                          >HERE</a
+                      >
+                  </p>
+
               </div>
           `
 }
 <div class="description">
-    <p>We’re part of the official CTM Vorspiel 2022 programme! Onsite and online from the 27th to the 30th of January, Field Conspiracy x Catalyst Berlin presents a transformational series of music industry focused events for up-and-coming artists. Check out the full programme here >>> https://vorspiel.berlin/?fbclid=IwAR1uLKiPQAdbKNQwjtWdocBCR99cDNr1IqErQFOCafsQFyRk9ZFp7vPfzcg</p>
-    <p id = 'editableHomePageDesc'>${homePageDesc}</p>
-    ${
-        sessionStorage.getItem("email") === "fieldconspiracy@gmail.com"
-            ? html`<button class="editButton editContact editHomePageDesc">Edit</button>`
-            : html``
-    }
+    
+
+          <!-- edit the home page description here -->
+    <p id = 'editableHomePageDesc'>
+        Field Conspiracy is a social experiment
+         & a record label, which nurtures community 
+         and creativity. It aims to be a playground 
+         of creative space for musicians, where the 
+         inspiration and courage to be free in a 
+         community are leading the life we want to 
+         live – so that we can live the life we want
+          to lead. Together we imagine a reality where
+           the “human management systems” are defined 
+           by the interest of communities to live a life
+            that provides them with the security and a 
+            space to be free in the creation of their 
+            own reality. When we realize that more can 
+            be achieved through the force of creative 
+            love than destructive fear and fight, 
+            then we open the door to collective humanity. 
+            The choice lies within all of us, here and now
+             and it is what has brought us together in this
+              experiment of positive radicalism in a form of
+               co-operation over competition.</p>
+
+               
 
 </div>
 <div class="instaDescription">instagram @fieldconspiracy</div>
@@ -171,7 +200,7 @@ export async function homePage(ctx) {
         document.getElementsByClassName("editHomePageDesc")[0];
 
     editHomePageDescButton?.addEventListener("click", (e) => {
-        console.log(e.target.textContent)
+        console.log(e.target.textContent);
         if (e.target.textContent === "Edit") {
             editableHomePageDesc.contentEditable = true;
             editableHomePageDesc.focus();
@@ -189,7 +218,7 @@ export async function homePage(ctx) {
         document.getElementsByClassName("editCreditButton")[0];
 
     editCreditButton?.addEventListener("click", (e) => {
-        console.log(e.target.textContent)
+        console.log(e.target.textContent);
         if (e.target.textContent === "Edit") {
             editableCredit.contentEditable = true;
             editableCredit.focus();
