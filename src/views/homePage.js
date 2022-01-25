@@ -14,6 +14,25 @@ ${
               <video type="video/m4v" playsinline autoplay loop muted>
                   <source src="../../assets/landingVideo.m4v" />
               </video>
+
+              <!-- edit credits for video here for MOBILE -->
+              <!-- you can change the text color in homePage.css file - line 217 -->
+
+              <div class="description">
+                  <p class = 'creditDescription'>
+                      We’re part of the official CTM Vorspiel 2022 programme!
+                      Onsite and online from the 27th to the 30th of January,
+                      Field Conspiracy x Catalyst Berlin presents a
+                      transformational series of music industry focused events
+                      for up-and-coming artists. Check out the full programme
+                      >>>
+                      <a
+                          class = 'text-flicker-in-glow'
+                          target="_blank"
+                          href="http://vorspiel.berlin/?fbclid=IwAR1uLKiPQAdbKNQwjtWdocBCR99cDNr1IqErQFOCafsQFyRk9ZFp7vPfzcg"
+                          >HERE</a
+                      >
+                  </p>
           `
         : html`
               <video type="video/webm" autoplay loop muted>
@@ -31,7 +50,7 @@ ${
                       for up-and-coming artists. Check out the full programme
                       >>>
                       <a
-                          class="text-flicker-in-glow"
+                      class = 'text-flicker-in-glow'
                           target="_blank"
                           href="http://vorspiel.berlin/?fbclid=IwAR1uLKiPQAdbKNQwjtWdocBCR99cDNr1IqErQFOCafsQFyRk9ZFp7vPfzcg"
                           >HERE</a
