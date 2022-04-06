@@ -20,16 +20,12 @@ ${
 
               <div class="description">
                   <p class = 'creditDescription'>
-                      We’re part of the official CTM Vorspiel 2022 programme!
-                      Onsite and online from the 27th to the 30th of January,
-                      Field Conspiracy x Catalyst Berlin presents a
-                      transformational series of music industry focused events
-                      for up-and-coming artists. Check out the full programme
+                      Video by Hyusfall see website
                       >>>
                       <a
                           class = 'text-flicker-in-glow'
                           target="_blank"
-                          href="http://vorspiel.berlin/?fbclid=IwAR1uLKiPQAdbKNQwjtWdocBCR99cDNr1IqErQFOCafsQFyRk9ZFp7vPfzcg"
+                          href="https://www.hyusfall.com/"
                           >HERE</a
                       >
                   </p>
